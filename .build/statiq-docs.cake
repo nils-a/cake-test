@@ -161,7 +161,7 @@ public void Statiq(string command = "", IDictionary<string, string> additionalSe
         ArgumentCustomization = args=>args
                                 .Append(" -- ")
                                 .Append(command)
-                                .Append("--root=\"{BuildParameters.WyamRootDirectoryPath}\""),
+                                .Append($"--root=\"{BuildParameters.WyamRootDirectoryPath}\""),
     });
 }
 
