@@ -108,10 +108,15 @@ BuildParameters.Tasks.ForcePublishDocumentationTask = Task("Force-Publish-Statiq
 
 public void PublishStatiqDocs()
 {
+    var canPublishToGiHub =
+                !string.IsNullOrEmpty(BuildParameters.Wyam.AccessToken) &&
+                !string.IsNullOrEmpty(BuildParameters.Wyam.DeployBranch) &&
+                !string.IsNullOrEmpty(BuildParameters.RepositoryOwner) &&
+                !string.IsNullOrEmpty(BuildParameters.RepositoryName);
 
-    if (!BuildParameters.CanUseWyam)
+    if (!canPublishToGiHub)
     {
-        Warning("Unable to publish documentation, as not all Wyam Configuration is present");
+        Warning("Unable to publish documentation, as not all Statiq Configuration is present");
         return;
     }
 
@@ -122,7 +127,6 @@ public void PublishStatiqDocs()
 public void Statiq(string command = "", IDictionary<string, string> additionalSetting = null)
 {
     var statiqProj = BuildParameters.WyamRootDirectoryPath.CombineWithFilePath("Docs.csproj").FullPath; // TODO: Configurable!
-    var logLevel = (Context.Log.Verbosity > Verbosity.Normal) ? "--log-level Trace" : string.Empty;
     var settings = new Dictionary<string, string>
     {
         { "Host", BuildParameters.WebHost },
@@ -149,10 +153,15 @@ public void Statiq(string command = "", IDictionary<string, string> additionalSe
         command += $" --virtual-dir={BuildParameters.WebLinkRoot}";
     }
 
+    // TODO: Read log-level from Env/commandline?
+
     DotNetCoreRun(statiqProj, new DotNetCoreRunSettings
     {
         EnvironmentVariables = settings,
-        ArgumentCustomization = args=>args.Append($" -- {command} --root=\"{BuildParameters.WyamRootDirectoryPath}\" {logLevel}"),
+        ArgumentCustomization = args=>args
+                                .Append(" -- ")
+                                .Append(command)
+                                .Append("--root=\"{BuildParameters.WyamRootDirectoryPath}\""),
     });
 }
 
