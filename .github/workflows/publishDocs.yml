@@ -20,6 +20,10 @@ jobs:
     - name: Fetch all tags and branches
       run: git fetch --prune --unshallow
 
+    - uses: actions/setup-dotnet@v3.0.3
+      with:
+        dotnet-version: 7.0.x
+
     - name: Cache Tools
       uses: actions/cache@v3
       with:
@@ -31,5 +35,4 @@ jobs:
       with:
         script-path: recipe.cake
         target: PublishDocs
-        verbosity: Diagnostic
         cake-version: 1.3.0

@@ -1,4 +1,4 @@
-#module nuget:?package=Cake.BuildSystems.Module&version=4.2.0
+#module nuget:?package=Cake.BuildSystems.Module&version=3.1.0
 #load nuget:?package=Cake.Recipe&version=3.0.1
 #l ./.build/statiq-docs.cake
 
