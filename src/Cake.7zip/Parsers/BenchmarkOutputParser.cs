@@ -6,7 +6,6 @@ namespace Cake.SevenZip.Parsers;
 
 /// <summary>
 /// Parses outputs of the <see cref="BenchmarkCommand"/>.
-/// Here is a change in the CODE.
 /// </summary>
 /// <seealso cref="IOutputParser{T}" />
 internal class BenchmarkOutputParser : IOutputParser<IBenchmarkOutput>
