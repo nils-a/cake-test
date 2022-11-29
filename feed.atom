@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<id>http://nils-a.github.io/Cake-Test</id>
-	<title>Cake-Test</title>
-	<link rel="self" href="http://nils-a.github.io/Cake-Test" />
+	<id>http://nils-a.github.io/cake-test</id>
+	<title>cake-test</title>
+	<link rel="self" href="http://nils-a.github.io/cake-test" />
 	<rights>2022</rights>
-	<updated>2022-11-29T20:27:16Z</updated>
+	<updated>2022-11-29T20:43:36Z</updated>
 </feed>
