@@ -8,7 +8,7 @@ BuildParameters.SetParameters(
   context: Context,
   buildSystem: BuildSystem,
   sourceDirectoryPath: "./src",
-  title: "Cake-Test",
+  title: "cake-test",
   masterBranchName: "main",
   repositoryOwner: "nils-a",
   shouldRunDotNetCorePack: true,
